@@ -146,59 +146,42 @@ MG和酒吧问题的主要成功是，它提供一个框架帮助人们思考对
 锦上添花的是这个模型家族的意义所在：
 每个人都和其他人互动，因为个人的奖励取决于整个群体的选择，而奖励是同步的。
 
-// · <=>---<=> · <=>---<=> · <=>---<=> · <=>---<=> · <=>---<=> · <=>---<=>
+**** DONE 争当少数者博弈
 
-**** 争当少数者博弈
+原始版本的EFBP着重于平均出席率，即均衡，并有一个松散定义的策略空间。
+但波动可能比平均出席人数丰富得多。
+设定$L=N/2$并考虑一个对称策略空间：这就是争当少数者博弈MG。
+我们推荐读者阅读布莱恩·亚瑟为MGbook[ref:29]写的漂亮的序言。
 
-The original version of the EFBP focuses on average attendance, i.e., equilibrium, and has a loosely defined strategy space. Fluctuations are potentially much richer than average attendance.
-Focusing on on them, i.e, on efficiency amounts to setting $L=N/2$ and considering a symmetric strategy space: this is the Minority Game \cite{CZ97}. We refer the reader to the nice preface written by Brian Arthur in \textcite{MGbook}.
+把这个模型看作两个独立的部分是有用的：
+- 少数者机制，负责主体与负反馈的互动。
+- 决定整体分配表现的学习方案。
 
-   It is useful to think of this model as two separate parts:
-\begin{itemize}
-\item The minority mechanism that is responsible for the interaction
-  between the players and negative feed-back.
-\item The learning scheme that determines the overall allocation
-  performance.
-\end{itemize}
+MG的规则可以如下形式化：
+- $N$个主体中的任意一个，都必须从两个选项中选择一个；
+- 获奖者是那些选择不受欢迎选项的人，即少数人。
+数学化地，如果主体$i$的行为是$a_{i}\in\{-1,+1\}$，
+全局行为是$A=\sum_{j=1}^{N}a_{j}\in\{-N,...,+N\}$，
+那么若$a_{i}$和$A$反号，则意味着$i$处于少数者群体，其收益是$-a_{i}A$。
 
+MG是一个负和游戏：
+所有收益的总和为$-\sum_{i} a_{i} A=-A^2 <= 0$，若$N$是奇数该式可写为严格的小于。
+这就是全局行为$A$的波动可以衡量全局损失的原因。
+另一个重要的衡量标准是平均结果的不对称性，用$H=<A>^{2}$衡量，
+其中括号表示静止状态下对时间的平均值。
+当$H>0$时，结果在统计上可预测。
 
-
-The minority rule can be formalized as follows: each one of the $N$ agents
-must select one of two options; the winners are those who choose the
-least popular option, i.e., who are in the minority.  Mathematically,
-if the action of agent $i$ is $a_{i}\in\{-1,+1\}$, the global action
-is $A=\sum_{j=1}^{N}a_{j}\in\{-N,\cdots,+N\}$; being in the minority
-is achieved if $a_{i}$ and $A$ have opposite signs; hence, the payoff
-is $-a_{i}A$.
-
-The MG is a negative sum game: the sum of all payoffs is $-\sum_i a_i
-A=-A^2\le 0$, with strict inequality if $N$ is odd. This is why the
-fluctuations of $A$ are a measure of global losses. Another important measure
-is the asymmetry of the average outcome, i.e., the crumbs left by the
-agents, measured by $H=\left<A\right>^2$, where the brackets stand for temporal average in the stationary state. When $H>0$, the outcome is
-statistically predictable.
-
-Intuitively, a stable situation is reached if no agent has an
-incentive to deviate from his current behavior; this is known as a
-Nash equilibrium. When all the agents have the
-same expected gain, the equilibrium is called symmetric, and
-asymmetric otherwise.  The Nash equilibria of the MG are discussed in
-\textcite{MC00}:
-\begin{enumerate}
-\item A symmetric NE is obtained when all the agents toss a coin to
-  choose their action; it corresponds to
-  $\sigma^2=\left<A^2\right>=N$, which yields an imperfect
-  allocation efficiency. Another such NE corresponds to $A=0$ (for
-  $N$ even).
-\item An asymmetric NE is obtained when $|A|=1$ for $N$ odd. Other
-  such equilibria are reached when $n$ agents play $-1$ and $n$ play
-  $+1$, while the remaining $N-2n$ play randomly. There are very
-  many of them.
-\end{enumerate}
-
+直觉上，如果所有主体都没有偏离他目前行为的动机，就会达到稳定的状态，这被称为纳什均衡NE。
+当所有主体具有相同的期望增益时，均衡就是对称的，否则是非对称的。
+MC00[ref:30]讨论了MG的纳什均衡：
+- 当所有主体都投掷硬币选择他们的动作时，获得一个对称的NE。
+  它对应于$\sigma^{2} = <A^{2}> =N$，这会产生不完美的分配效率。
+  另一个对称NE对应于$A=0$的情况（$N$为偶数时）。
+- 当$N$为奇数时，若$|A|=1$则获得不对称NE。
+  当$n$个主体选择$-1$，$n$个选择$+1$，而剩下的$N-2n$个随机选择时，就会达到这样的均衡。
+  类似的均衡有很多。
 
 \subsubsection{Re-inforcement learning and allocation efficiency}
-\label{sec:mg_P1}
 Simple Markovian learning schemes are well suited to familiarize
 oneself with the interplay between learning and fluctuations in MGs.
 Learning from past actions depends on receiving positive or negative
